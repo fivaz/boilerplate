@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { authClient, signUp } from "@/lib/auth-client";
-import { ROUTES } from "@/lib/consts";
+import {APP_NAME, ROUTES} from "@/lib/consts";
 import { cn } from "@/lib/utils";
 
 export function RegisterForm({ className, ...props }: ComponentProps<"div">) {
@@ -101,7 +101,7 @@ export function RegisterForm({ className, ...props }: ComponentProps<"div">) {
 							<div className="bg-primary text-primary-foreground flex size-10 items-center justify-center rounded-md">
 								<Dumbbell className="size-8 text-white" />
 							</div>
-							<span className="sr-only">Acme Inc.</span>
+							<span className="sr-only">{APP_NAME}</span>
 						</Link>
 						<h1 className="text-xl font-bold">Create an account</h1>
 						<FieldDescription>

@@ -1,3 +1,5 @@
+export const APP_NAME = "BoilerPlate";
+
 export const ROUTES = {
 	HOME: "/",
 	LOGIN: "/login",

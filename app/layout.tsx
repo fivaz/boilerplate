@@ -8,10 +8,10 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { ConfirmProvider } from "@/hooks/confirm/confirm-provider";
+import {APP_NAME} from "@/lib/consts";
 
-const APP_NAME = "Habits";
-const APP_DEFAULT_TITLE = "Habits";
-const APP_TITLE_TEMPLATE = "%s - Habits";
+const APP_DEFAULT_TITLE = "BoilerPlate";
+const APP_TITLE_TEMPLATE = "%s - BoilerPlate";
 const APP_DESCRIPTION = "Track your workouts and monitor your progress.";
 
 export const metadata: Metadata = {

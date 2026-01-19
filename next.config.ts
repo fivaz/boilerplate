@@ -17,7 +17,7 @@ const sentryOptions = {
 
 	org: "fivaz-lb",
 
-	project: "Habits",
+	project: "BoilerPlate",
 
 	// Only print logs for uploading source maps in CI
 	silent: !process.env.CI,
