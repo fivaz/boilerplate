@@ -8,13 +8,13 @@ You can perform a **Global Search and Replace** in your editor (usually `Cmd+Shi
 
 ### 📂 Files to Update
 
-| File             | Context                                      | Meaning/Purpose                                                                                          |
-|:-----------------|:---------------------------------------------|:---------------------------------------------------------------------------------------------------------|
-| `package.json`   | `"name": "boilerPlate"`                      | Defines the official project name for the Node.js environment and package manager.                       |
+| File             | Context                                                      | Meaning/Purpose                                                                                          |
+|:-----------------|:-------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------|
+| `package.json`   | `"name": "boilerplate"`                                      | Defines the official project name for the Node.js environment and package manager.                       |
 | `app/layout.tsx` | `APP_DEFAULT_TITLE`, `APP_TITLE_TEMPLATE`, `APP_DESCRIPTION` | Sets the HTML metadata and the name that appears in browser tabs.                                        |
-| `manifest.json`  | `name`, `short_name`                         | Configures the Progressive Web App (PWA) name for mobile and desktop installation.                       |
-| `next.config.ts` | `project: "BoilerPlate"` | Links the application to your specific **Sentry project** for error tracking and performance monitoring. |
-| `consts.ts`      | `APP_NAME`                                   | The single source of truth for the app name; used by `login-form.tsx`, `register-form.tsx` and `app/layout.tsx`.       |
+| `manifest.json`  | `name`, `short_name`                                         | Configures the Progressive Web App (PWA) name for mobile and desktop installation.                       |
+| `next.config.ts` | `project: "boilerplate"`                                     | Links the application to your specific **Sentry project** for error tracking and performance monitoring. |
+| `consts.ts`      | `APP_NAME`                                                   | The single source of truth for the app name; used by `login-form.tsx`, `register-form.tsx` and `app/layout.tsx`.       |
 
 ---
 

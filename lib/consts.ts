@@ -1,4 +1,4 @@
-export const APP_NAME = "BoilerPlate";
+export const APP_NAME = "Boilerplate";
 
 export const ROUTES = {
 	HOME: "/",
