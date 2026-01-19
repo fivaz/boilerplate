@@ -4,6 +4,8 @@ To transform this boilerplate into your specific application, replace all occurr
 
 You can perform a **Global Search and Replace** in your editor (usually `Cmd+Shift+F` or `Ctrl+Shift+F` in VS Code).
 
+---
+
 ### 📂 Files to Update
 
 | File             | Context                                      | Meaning/Purpose                                                                                          |
@@ -34,6 +36,7 @@ Before running the application, you need to initialize your environment variable
 4.  **Test Credentials:** The `seed.ts` file automatically generates a default user for development. You can log in with:
     - **Email:** `test@test.com`
     - **Password:** `test@test.com`
+
 ---
 
 ### 🎨 Customizing Icons & Branding
@@ -46,6 +49,8 @@ This boilerplate uses a PWA asset generator to handle icons for all platforms au
 ```bash
 pnpm run generate-pwa-assets
 ```
+
+---
 
 ### 💻 Available Scripts
 
@@ -64,6 +69,63 @@ pnpm run generate-pwa-assets
 | `pnpm run generate-pwa-assets` | 'Generates all necessary PWA icons from your favicon.svg.' |
 | `pnpm run release:test` | 'Runs GitHub Actions locally using act.' |
 | `pnpm run release:prune-cache` | 'Clears the local cache used by act.' |
+
+---
+
+### ⚡ Optimistic UI Hook Factory
+
+The boilerplate includes a powerful factory in `hooks/use-entity-mutations.ts`. Its purpose is to allow you to mutate entities **optimistically** (updating the UI instantly) while running server actions in the background to persist changes in the DB, with automatic rollbacks on error.
+
+#### 1. Create your Entity Store
+To manage a specific entity (e.g., `Task`), create a file like `hooks/task-store.ts`:
+
+```typescript
+import { createEntityStore } from "@/hooks/optimistic/create-entity-store";
+import { createEntityMutations } from "@/hooks/optimistic/use-entity-mutations";
+import { Task } from "@/lib/generated/prisma/client";
+
+export const [TasksProvider, useTasksStore] = createEntityStore<Task>();
+export const useTaskMutations = createEntityMutations(useTasksStore);
+```
+#### 2. Usage in Components
+Wrap your parent component in the TasksProvider. In child components, you can access the state and mutations:
+
+```tsx
+<TasksProvider initialItems={dataFromDatabase}>
+    <TaskList />
+</TasksProvider>
+```
+
+##### Read state in `<TaskList />` or any of its children:
+```typescript
+const { items: tasks } = useTasksStore();
+// or const { items: tasks } = useTaskMutations();
+```
+
+##### Perform mutations:
+
+```tsx
+const { updateItem, isPending } = useTaskMutations();
+
+const handleRename = (task: Task) => {
+    updateItem({ ...task, name: "New Name" }, {
+        // 1. The background work (Server Action)
+        persist: () => renameTaskAction(task.id, "New Name"),
+
+        // 2. Feedback
+        onSuccess: () => toast.success("Saved"),
+        onError: () => toast.error("Connection lost. Reverting changes..."),
+    });
+};
+
+return (
+    <button onClick={handleRename} disabled={isPending}>
+    {isPending ? "Saving..." : "Rename Task"}
+    </button>
+);
+```
+
+---
 
 ### 💡 Refactoring Tip (Optional)
 If you find that your IDE automatically deletes imports while you are still moving code around, you can temporarily disable this behavior at the IDE level.
