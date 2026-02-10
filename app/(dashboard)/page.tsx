@@ -8,7 +8,7 @@ export default async function HomePage() {
 					<div className="flex items-center justify-between">
 						<div className="flex items-center gap-3">
 							<div className="flex size-10 items-center justify-center rounded-xl bg-linear-to-br from-violet-500 to-indigo-600 shadow-lg shadow-violet-200">
-								<Logo className="size-6" />
+								<Logo className="size-6 text-white" />
 							</div>
 							<div>
 								<h1 className="text-foreground text-lg font-bold">Boilerplate</h1>
