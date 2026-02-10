@@ -9,6 +9,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { ConfirmProvider } from "@/hooks/confirm/confirm-provider";
 import { APP_NAME } from "@/lib/consts";
+import { cn } from "@/lib/utils";
 
 const APP_DEFAULT_TITLE = "boilerplate";
 const APP_TITLE_TEMPLATE = "%s - boilerplate";
@@ -81,22 +82,24 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+			<body className={cn(geistSans.variable, geistMono.variable, "bg-card antialiased")}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
 					enableSystem
 					disableTransitionOnChange
 				>
-					<ConfirmProvider>
-						<div className="mx-auto min-h-svh max-w-md border bg-gray-50 dark:bg-gray-900">
+					<div className="mx-auto min-h-svh max-w-md">
+						<ConfirmProvider>
 							{/* Main Content Area */}
-							<div className="absolute right-0 p-5">
+							<div className="fixed right-0 p-5">
 								<ModeToggle />
 							</div>
-							{children}
-						</div>
-					</ConfirmProvider>
+							<div className="border-border bg-background flex min-h-svh flex-col border">
+								{children}
+							</div>
+						</ConfirmProvider>
+					</div>
 					<Toaster />
 				</ThemeProvider>
 			</body>

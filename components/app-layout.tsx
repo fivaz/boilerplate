@@ -4,20 +4,16 @@ import React, { ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import {
-	HomeIcon,
-	Settings2Icon,
-} from "lucide-react";
+import { HomeIcon, Settings2Icon } from "lucide-react";
 
 import { ROUTES } from "@/lib/consts";
 import { cn } from "@/lib/utils";
 
 type AppLayoutProps = {
 	children: ReactNode;
-	className?: string;
 };
 
-export function AppLayout({ children, className }: AppLayoutProps) {
+export function AppLayout({ children }: AppLayoutProps) {
 	const pathname = usePathname();
 
 	const navItems = [
@@ -27,17 +23,10 @@ export function AppLayout({ children, className }: AppLayoutProps) {
 
 	return (
 		<>
-			<main
-				className={cn(
-					className,
-					"min-h-svh bg-gray-50 pb-20 text-gray-900 transition-colors duration-300 dark:bg-gray-900 dark:text-white",
-				)}
-			>
-				{children}
-			</main>
+			{children}
 
 			{/* Persistent Bottom Navigation */}
-			<nav className="fixed right-0 bottom-0 left-0 z-50 border-t border-gray-200 bg-white px-2 py-2 pb-5 transition-colors duration-300 dark:border-gray-700 dark:bg-gray-800">
+			<nav className="bg-card border-border sticky right-0 bottom-0 left-0 z-20 border-t px-2 py-2 pb-5">
 				<div className="mx-auto flex max-w-md items-center justify-around">
 					{navItems.map((item) => {
 						const isActive = pathname === item.href;
@@ -48,13 +37,14 @@ export function AppLayout({ children, className }: AppLayoutProps) {
 								key={item.href}
 								href={item.href}
 								aria-current={isActive ? "page" : undefined}
-								className={`flex flex-col items-center justify-center rounded-xl px-3 py-1.5 transition-all duration-200 ${
+								className={cn(
+									"flex flex-col items-center justify-center rounded-xl px-3 py-1.5 transition-all duration-200",
 									isActive
-										? "bg-orange-50 text-orange-500 dark:bg-orange-500/10"
-										: "text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
-								}`}
+										? "bg-primary-foreground text-primary dark:bg-primary/10"
+										: "text-muted-foreground hover:text-gray-600 dark:hover:text-gray-300",
+								)}
 							>
-								<Icon className={`h-5 w-5 ${isActive ? "stroke-[2.5]" : ""}`} />
+								<Icon className={cn("size-5", { "stroke-[2.5]": isActive })} />
 								<span className="mt-0.5 text-[10px] font-medium">{item.label}</span>
 							</Link>
 						);
