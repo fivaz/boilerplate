@@ -1,4 +1,4 @@
-export const APP_NAME = "Boilerplate";
+export const APP_NAME = "boilerplate";
 
 export const ROUTES = {
 	HOME: "/",
@@ -6,5 +6,3 @@ export const ROUTES = {
 	REGISTER: "/register",
 	SETTINGS: "/settings",
 };
-
-export const PAGE_SIZE = 20;
