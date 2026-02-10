@@ -31,6 +31,6 @@ export async function updateTimezoneAction(newTimezone: string) {
 
 		revalidatePath(ROUTES.HOME);
 	} catch (error) {
-		logError(error, { extra: { context: "updateTimezoneAction" } });
+		logError(error, "updateTimezoneAction");
 	}
 }
