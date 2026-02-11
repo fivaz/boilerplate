@@ -20,7 +20,11 @@ async function main() {
 
 	console.log("🚀 Starting seed...");
 
-	// --- 1️⃣ Create or upsert user ---
+	// --- 1️⃣ Cleanup ---
+	console.log("🧹 Cleaning up existing data...");
+	// await safeDelete(() => prisma.[newTable].deleteMany());
+
+	// --- 2️⃣ Create or upsert user ---
 	const user = await prisma.user.upsert({
 		where: { id: DEV_USER_ID },
 		update: {},
@@ -32,7 +36,7 @@ async function main() {
 		},
 	});
 
-	// --- 2️⃣ Create or upsert account ---
+	// --- 3️⃣ Create or upsert account ---
 	await prisma.account.upsert({
 		where: { id: DEV_ACCOUNT_ID },
 		update: {},
@@ -45,8 +49,6 @@ async function main() {
 				"572915f247a8c5c4be56201a48bad84f:0b983fe1a6c3b51a9207c10d21e02f74606803844806e8d45f39e80ccb7b4529108cdc21b24488ae6a5ce60d61b9a2cf94294e20a50525903c0bd05aa07006ca",
 		},
 	});
-
-	console.log("🧹 Cleaning up existing data...");
 
 	console.log("✅ Seed completed");
 }

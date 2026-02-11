@@ -1,12 +1,26 @@
+import { Logo } from "@/components/logo";
+
 export default async function HomePage() {
 	return (
-		<div className="relative flex w-full flex-col">
-			<div className="flex items-start justify-between pb-4">
-				<div>
-					<h1 className="text-foreground text-2xl font-bold">Home</h1>
-					<small className="mt-1 text-red-500">(not implemented yet)</small>
+		<>
+			<header className="bg-card border-border sticky top-0 z-20 border-b">
+				<div className="space-y-4 px-4 py-4">
+					<div className="flex items-center justify-between">
+						<div className="flex items-center gap-3">
+							<div className="flex size-10 items-center justify-center rounded-xl bg-linear-to-br from-violet-500 to-indigo-600 shadow-lg shadow-violet-200">
+								<Logo className="size-6 text-white" />
+							</div>
+							<div>
+								<h1 className="text-foreground text-lg font-bold">Boilerplate</h1>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
+			</header>
+
+			<main className="flex flex-1 flex-col overflow-auto">
+				<div className="p-4"></div>
+			</main>
+		</>
 	);
 }
