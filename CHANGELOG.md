@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/fivaz/boilerplate/compare/v1.0.1...v1.0.2) (2026-01-19)
+
+### 🔨 Code Refactoring
+
+* rename from boilerPlate to boilerplate ([1724d23](https://github.com/fivaz/boilerplate/commit/1724d2345838c3ddd0f8b28f3ad420f7ac5d1ed0))
+
 ## [1.0.1](https://github.com/fivaz/boilerplate/compare/v1.0.0...v1.0.1) (2026-01-19)
 
 ### 🧹 Chores
